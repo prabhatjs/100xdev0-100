@@ -1,0 +1,3 @@
+neon db is serverless postgresql db.
+
+middleware,authentication,global catches ,zod
