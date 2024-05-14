@@ -1,0 +1,29 @@
+some commnd is not as working on windows 
+then we need to install "wsl" its stand for Windows Subsystem for Linux 
+
+"wsl --shutdown"
+
+ls:-show the directory folders(list the content)
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        11-05-2024     12:34                ConnectPostgrsNodejs
+d-----        11-05-2024     12:14                week1
+d-----        13-05-2024     22:54                week2
+-a----        09-05-2024     01:43             12 .gitignore
+-a----        09-05-2024     01:44              0 Readme.md
+
+
+pwd-print working directory means current directory where you stand
+
+cd -change directory
+
+mkdir --create folder
+
+cat index.js- this cmd print the content of the file on terminal.
+
+vi -- open vim terminal and you can edit and delete file 
+exit from vim terminal "Esc,:q!",save not work esc:wq will save you file
+
+mv -move file  form one folder to other folder
+--mv imp.txt bash/
+mv 
