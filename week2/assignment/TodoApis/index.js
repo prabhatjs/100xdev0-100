@@ -47,7 +47,18 @@
 
   app.use(bodyParser.json());
 
-  
+  function getIndex(todos,id){
+    console.log(todos.length,typeof(id));
+    for(let i=0;i<todos.length;i++){
+        if(todos[i].id===id){
+            console.log(i);
+            return i;
+        }
+    }
+            return -1;
+        
+    
+  }
     app.get('/todos', (req, res) => {
         fs.readFile("./TodoDB/tododb.json", "utf8", function(err, data) {
           if (err) throw err;
@@ -60,6 +71,7 @@
         id:Date.now(),
         title:req.body.title,
         description:req.body.description,
+        completed:req.body.completed,
         }
         console.log(newtodo);
         fs.readFile("./TodoDB/tododb.json", "utf8", function(err, data) {
@@ -84,16 +96,46 @@
             const todo=todos.find((todo)=>todo.id===id);
             const indx=todos.indexOf(todo);
             const newData=todos.splice(indx,1);
-            console.log(todo,indx,newData);
-       
             fs.writeFile("./TodoDB/tododb.json",JSON.stringify(todos),(err)=>{
                 if (err) throw err;
                 res.send({
                     newData
             })
-              })
+        })
 
     })
+    })
+    app.put('/todos/:id',(req,res)=>{
+        const id=Number(req.params.id);
+        fs.readFile("./TodoDB/tododb.json", "utf8", function(err, data){
+            if (err) throw err;
+            const todos=JSON.parse(data);
+            console.log(typeof(id));
+            const index=getIndex(todos,id);
+            console.log(index);
+                if(index===-1){
+                    res.send({
+                        message:"Not find Id"
+                    })
+                }
+                else{
+                    const updatetod={
+                        id:todos[index].id,
+                        title:req.body.title,
+                        description:req.body.description,
+                        completed:req.body.completed,
+                    }
+                    todos[index]=updatetod; 
+                    fs.writeFile("./TodoDB/tododb.json",JSON.stringify(todos),(err)=>{
+                        if (err) throw err;
+                        res.send({
+                            updatetod
+                        })
+                    })
+                }
+               
+        })
+       
     })
 
 
