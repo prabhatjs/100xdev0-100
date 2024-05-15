@@ -1,5 +1,5 @@
 const express=require('express');
-
+const {rateLimiterMiddleware}=require('./middleware/ratelimiting')
 const app=express();
 
 /**
@@ -7,25 +7,47 @@ const app=express();
  * middelware :- are function which are used to per-check condition 
  */
 
-
-app.get('/health-checkup',function(req,res){
-    //check username and password
-    const kidneyid=req.query.kidneyid;
-    const username=req.headers.username;
-    const password=req.headers.password;
-    if(username!='Prabhat' ||  password!='Password1'){
+function userMiddleware(req,res,next){
+     //check username and password
+     console.log(Date.now());
+    if(req.headers.username!='Prabhat' || req.headers.password!='Password1')
+        {
         res.status(403).json({
             mesg:'User doesnt exist',
         })
-        return;
     }
+        else{
+            next();
+        }
+}
+function kidneyMiddleware(req,res,next){
+    console.log(Date.now());
+    const kidneyid=req.query.kidneyid;
     if(kidneyid!=1 && kidneyid!=2){
         res.status(411).json({
             mesg:"Wrong Inputs"
         })
-        return;
+    }else{
+        next();
     }
+}
+let number=0;
+function calulateRequest(req,res,next){
+   
+    number++;
+    console.log(number)
+    
+        next();
+    
+}
+app.use(calulateRequest);
+app.use(rateLimiterMiddleware);
+app.get('/health-checkup',userMiddleware,kidneyMiddleware, function(req,res){
         res.send('Heart is healthy');
+})
+app.get('/kideny-checkup',userMiddleware,kidneyMiddleware ,function(req,res){
+    console.log(Date.now());
+    res.send('Kideny is healty');
 })
 
 app.listen(3000,()=>{
