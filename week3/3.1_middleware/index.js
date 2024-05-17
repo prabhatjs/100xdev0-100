@@ -84,27 +84,44 @@ app.post('/heart-check',(req,res)=>{
 const objectSchema=zod.object({
     email:zod.string().email(),
     password:zod.string().min(1,{message:'This is required'}).min(8,{message:"To Sort"}),
-    country:zod.literal("IN").or(zod.literal("GER"))
+    country:zod.literal("IN").or(zod.literal("GER")).optional()
 })
+app.post('/login2',function(req,res){
+    const payloads=req.body;
+    const response=objectSchema.safeParse(payloads);
 
-
+    if(!response.success){
+        res.json({
+            mesg:'Your Inputs are invalid'
+        })
+        return;
+    }
+    else{
+        res.json({
+            mesg:'Login Successfully'
+        })
+    }
+    
+})
 /**Another example of validating email,and password */
-
 function validateInputs(obj){
   const loginSchema=zod.object({  
-    email:zod.string().email,
+    email:zod.string().email(),
     password:zod.string().min(9)
 })
 const response=loginSchema.safeParse(obj)
-console.log(response);
+//console.log(response);
+return response;
 }
-
 app.post('/login',function(req,res){
+    console.log(req.body);
         const response=validateInputs(req.body);
+        console.log(response);
         if(!response.success){
             res.json({
                 mesg:'Your Inputs are invalid'
             })
+            return;
         }
         else{
             res.json({
@@ -122,11 +139,11 @@ app.post('/login',function(req,res){
 
 
 //how to create global catch end of the program its middelware
-app.use(function(err,req,res,next){
-    res.json({
-      mesg:  "Sorry Somthing is up with our server"
-    })
-})
+// app.use(function(err,req,res,next){
+//     res.json({
+//       mesg:  "Sorry Somthing is up with our server"
+//     })
+// })
 
 
 app.listen(3000,()=>{
