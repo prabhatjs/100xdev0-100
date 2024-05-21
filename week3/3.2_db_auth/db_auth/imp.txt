@@ -1,0 +1,6 @@
+hasing
+encrypt
+hasing->same input give same output ,if simple string can chnage into a hasing code it will allways same but hasing code into string never convert
+encrypt is the procces of change a string into A some randome words or numbers but encrypt code will change into string using key(its a two way proccess)
+
+json web token-->   
