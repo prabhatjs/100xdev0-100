@@ -1,0 +1,47 @@
+what is next js-
+It uses rect for building user interface
+Provides additional fectures that enable you to build production-ready appliaction
+these fetures includes routing optimized renddering ,data fetching bundling,compiling and more
+
+why we learn nextjs
+next js simplifies the process of building a web application for production
+1.routing
+2.Api routes
+3.Rendering(support clint and server side rendering)
+4.Data feteching
+5.Styling
+6.optimization
+
+React server components(RSC)
+React server components is a new architecture introduced by the react team in version 18 which was quickly embraced by next.js
+
+The architecture introduced a new way of creating React components, splitting them into two types:
+1.Server components
+2.Client components
+
+Sever components--
+in next js all components are server components by default
+they have the ability to run tasks like reading files or fetching data from a database
+they don't have the ability to use hooks or handle user interactions
+
+clint components--
+To create a client components its neccessary to add "use client" at the top of the components file
+Client components can't perform tasks like reading files but they have the ability to use hooks and manage interactions
+
+Routing;
+-----------
+Next js has a file system based routing machanism
+URL paths that users can access in the browser are defined by files and folders in your database
+
+Routing Conventions:
+-----------------------
+All routes must b e placed inside the app folders
+Every files that corresponds to a routes must be named 'page.js' or 'page.tsx'
+Every folder corresponds to a path segment in the browser URL
+
+Nested routes
+localhost:3000/blog
+localhost:3000/blog/first
+localhost:3000/blog/second
+
+[]:square barcket dynamic segment of page,use as dynamic routes
