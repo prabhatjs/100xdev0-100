@@ -64,4 +64,12 @@ Allows us to logically group our routes and project files without afftection the
 lets implement authentication routes
 Register
 Login
-Forgot Password
+Forgot Password(auth)
+
+
+Layouts--
+A page is UI that is unique to a routes
+A layout is UI that is shared between multiple pages in the app
+
+You can define a layout by default exporting a React component from a layout.js or layout.tsx file
+that component should accept a children prop that will be populated with a child page during rendering
