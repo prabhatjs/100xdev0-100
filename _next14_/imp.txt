@@ -47,3 +47,21 @@ localhost:3000/blog/second
 []:square barcket dynamic segment of page,use as dynamic routes
 
 catch-all segments
+
+private folders
+a private folder indicates that it is a private implementation details and should not be considered by the routing system
+The folder and all its subfolders are excluded from routing
+prefix the folder name with an underscore
+
+its helps where we want to separating UI Logic from routing Logic
+for consistently organizing internal files across aproject
+for sorting and grouping files in code editors
+and finally for avoiding potential naming conflict with future next.js file Conventions
+
+
+Route Groups:
+Allows us to logically group our routes and project files without afftection the URL path structure.
+lets implement authentication routes
+Register
+Login
+Forgot Password
