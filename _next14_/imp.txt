@@ -45,3 +45,5 @@ localhost:3000/blog/first
 localhost:3000/blog/second
 
 []:square barcket dynamic segment of page,use as dynamic routes
+
+catch-all segments
