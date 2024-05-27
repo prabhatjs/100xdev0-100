@@ -1,3 +1,11 @@
 neon db is serverless postgresql db.
 
 middleware,authentication,global catches ,zod
+
+
+DataBase 
+There are verious type of db
+Vector db
+Graph db
+SQL db
+NoSQL db
