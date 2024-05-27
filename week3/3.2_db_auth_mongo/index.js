@@ -11,7 +11,9 @@ const jwt=require('jsonwebtoken');
 const dotenv=require('dotenv');
 const jwtPassword="123456";
 
-
+const app=express();
+app.use(express.json());
+// mongoose.connect(`mongodb+srv://USerNAme:PAssword@testingcluster.hduwizt.mongodb.net/`);
 
 
 //1 create schema
@@ -22,7 +24,27 @@ const User=mongoose.model('User',{
     password:String
 });
 
-const user=new User({name:'Sahil',email:'Sahil@gmail.com',password:"12342WDE"});
-user.save().then(()=>{
-    console.log("DATA SAVE")
+app.post('/signup',async (req,res)=>{
+    const name=req.body.name;
+    const email=req.body.email;
+    const password=req.body.password;
+
+    const existUser= await User.findOne({email:email});
+
+    if(existUser){
+        return res.status(400).send("User Email already in use");
+    }
+
+    const user=new User({
+        name:name,
+        email:email,
+        password:password
+    })
+    user.save();
+    res.json({
+    mesg:"Save Data"
+});
 })
+ app.listen(3000,()=>{
+    console.log("server Rrun");
+ })
