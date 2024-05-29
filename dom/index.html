@@ -6,15 +6,24 @@
     <title>Document</title>
 </head>
 <script>
-        function givemeTotal(){
+       async function  givemeTotal(){
         console.log(document.getElementById("total"));
         let variable1=parseInt(document.getElementById("first").value);
         let variable2=parseInt(document.getElementById("second").value)
       
-             fetch(`http://localhost:3000/sum?a=${variable1}&b=${variable2}`)   
+            //  const res= fetch(`http://localhost:3000/sum?a=${variable1}&b=${variable2}`).then(function(response){
+            //     console.log(response);
+
+            //     response.text().then(function(sum){
+            //         console.log(sum);
+            //         document.getElementById("total").innerHTML=sum;
+            //     })
+            //  })  
            
             //let sum=variable1+variable2;
-            //document.getElementById("total").innerHTML=sum;
+                    const res=await fetch(`http://localhost:3000/sum?a=${variable1}&b=${variable2}`);
+                    const sum=await res.text();
+                    document.getElementById("total").innerHTML=sum;
         }
       
 </script>
