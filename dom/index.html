@@ -11,10 +11,10 @@
         let variable1=parseInt(document.getElementById("first").value);
         let variable2=parseInt(document.getElementById("second").value)
       
-      
+             fetch(`http://localhost:3000/sum?a=${variable1}&b=${variable2}`)   
            
-            let sum=variable1+variable2;
-            document.getElementById("total").innerHTML=sum;
+            //let sum=variable1+variable2;
+            //document.getElementById("total").innerHTML=sum;
         }
       
 </script>
