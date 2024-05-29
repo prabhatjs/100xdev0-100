@@ -1,0 +1,2 @@
+the Dom Api is progrmaing interface for web documents.it represents the page so that programs can chnage the document structure style and content .
+The DOM represents the documents as a tree of objects each object represents a part of the page.

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+        function givemeTotal(){
+        console.log(document.getElementById("total"));
+        let variable1=parseInt(document.getElementById("first").value);
+        let variable2=parseInt(document.getElementById("second").value)
+      
+      
+           
+            let sum=variable1+variable2;
+            document.getElementById("total").innerHTML=sum;
+        }
+      
+</script>
+<body>
+    <input type="text" placeholder="Number One" id="first" oninput="givemeTotal()"/><br>
+    <input type="text" placeholder="Second One" id="second" oninput="givemeTotal()"/><br>
+    <button onclick="givemeTotal()">Sum</button><br>
+    <div id="total">Sum</div>
+</body>
+</html>
