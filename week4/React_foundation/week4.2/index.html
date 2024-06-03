@@ -6,16 +6,33 @@
     <title>Document</title>
     <script>
         let globalId=1;
-        
+        function markAsDone(id){
+            const parent=document.getElementById(id);
+            parent.children[2].innerHTML="Done!"
+        }
+
+
+            function createChild(Task,Description,id){
+                const child=document.createElement("div");
+                const FirstGrandParent=document.createElement("div");
+                FirstGrandParent.innerHTML=Task;
+                const SecondGrandParent=document.createElement("div");
+                SecondGrandParent.innerHTML=Description;
+                const ThirdGrandParent=document.createElement("button");
+                ThirdGrandParent.innerHTML="Mark As Done";
+                ThirdGrandParent.setAttribute("onclick",`markAsDone(${id})`);
+                child.appendChild(FirstGrandParent);
+                child.appendChild(SecondGrandParent);
+                child.appendChild(ThirdGrandParent);
+                child.setAttribute("id",id);
+                return child;
+            }
             function addtodo(){
                 const Task=document.getElementById("Task").value;
                 const Description=document.getElementById("Description").value;
                 //append the div one by one when task added on it
-                 document.getElementById("container").innerHTML=`<div>
-                        <div>${Task}</div>
-                        <div>${Description}</div>
-                        <button>Mark as done</button>
-                    </div>`
+                 const parent=document.getElementById("container");
+                 parent.appendChild(createChild(Task,Description,globalId++));
             }
     </script>
 </head>
