@@ -6,14 +6,14 @@ mongoose.connect('mongodb://localhost:27017/coursesallingdb');
 // Define schemas
 const AdminSchema = new mongoose.Schema({
     // Schema definition here
-    username:"String",
-    password:"String"
+    username:String,
+    password:String
 });
 
 const UserSchema = new mongoose.Schema({
     // Schema definition here
-    username:"String",
-    password:"String",
+    username:String,
+    password:String,
     parchaseCourse:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Course"
@@ -24,17 +24,18 @@ const CourseSchema = new mongoose.Schema({
     // Schema definition here
 
     title:{
-        tyep:"String"
+        tyep:String
     },
     description:{
-        type:"String"
+        type:String
     },
     price:{
         type:Number
     },
     imageLink:{
-        type:"String"
-    }
+        type:String
+    },
+    published:Boolean
 
 });
 
