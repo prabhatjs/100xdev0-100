@@ -4,6 +4,9 @@ const filters=arr.filter(num=>num>10);
 console.log(filters);
 
 
+
+
+
 function saymyname(name){
     let mname='prabhat';
     console.log(mname);
