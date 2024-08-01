@@ -1,0 +1,2 @@
+diffrence between position fixed and absolute?
+
